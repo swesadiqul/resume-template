@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+Resume | Services
+{% endblock title %}
+
+
+
+{% block content %}
+<section id="services" class="services mt-5 py-5">
+  <div class="container">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Service</li>
+      </ol>
+    </nav>
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+      <div class="col">
+        <div class="card shadow">
+          <img src="{% static 'images/s2.jpg' %}" class="card-img-top" alt="..." style="height: 200px;">
+          <div class="card-body">
+            <span class="badge rounded-pill text-bg-danger">Python</span>
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">There are many variations of passages of Lorem Ipsum available, but the majority have
+              suffered alteration in some form, by injected humour,</p>
+            <div class="details text-center">
+              <a href="#" class="btn btn-primary px-4">View Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow">
+          <img src="{% static 'images/s4.jpg' %}" class="card-img-top" alt="..." style="height: 200px;">
+          <div class="card-body">
+            <span class="badge rounded-pill text-bg-danger">JavaScript</span>
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">There are many variations of passages of Lorem Ipsum available, but the majority have
+              suffered alteration in some form, by injected humour,</p>
+            <div class="details text-center">
+              <a href="#" class="btn btn-primary px-4">View Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow">
+          <img src="{% static 'images/s6.jpg' %}" class="card-img-top" alt="..." style="height: 200px;">
+          <div class="card-body">
+            <span class="badge rounded-pill text-bg-danger">UI/UX</span>
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">There are many variations of passages of Lorem Ipsum available, but the majority have
+              suffered alteration in some form, by injected humour,</p>
+            <div class="details text-center">
+              <a href="#" class="btn btn-primary px-4">View Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card shadow">
+          <img src="{% static 'images/s7.jpg' %}" class="card-img-top" alt="..." style="height: 200px;">
+          <div class="card-body">
+            <span class="badge rounded-pill text-bg-danger">Graphics</span>
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">There are many variations of passages of Lorem Ipsum available, but the majority have
+              suffered alteration in some form, by injected humour,</p>
+            <div class="details text-center">
+              <a href="#" class="btn btn-primary px-4">View Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

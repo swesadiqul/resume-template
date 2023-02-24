@@ -1,0 +1,11 @@
+.heading{
+    font-size: 30px;
+    font-weight: bolder;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+    text-transform: capitalize;
+    background-color: dodgerblue;
+    padding: 50px 0;
+    color: white;
+    margin: 20px 0;
+}
