@@ -1,37 +1,71 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    {% load static %}
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="{% static 'images/1.jpg' %}">
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="{% static 'css/all.min.css' %}"> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-    <title>
-      
-      {% block title %}
-        
-      {% endblock title %}
-        
-    </title>
-  </head>
-  <body>
+<head>
+  {% load static %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="{% static 'images/1.jpg' %}">
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="{% static 'css/all.min.css' %}"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-    {% include 'include/header.html' %}
+  <title>
 
-    {% block content %}
-     
-    {% endblock content %}
+    {% block title %}
+
+    {% endblock title %}
+
+  </title>
+</head>
+
+<body>
+
+  
+  <div aria-live="polite" aria-atomic="true" class="position-relative" style="z-index: 15000;" >
+    <div class="toast-container top-0 end-0 p-3">
+      <!-- Then put toasts within -->
+      <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="liveToast">
+        <div class="toast-header">
+          <img src="{% static 'images/1.jpg' %}" class="rounded-circle me-2" alt="Resume" style="height: 20px;">
+          <strong class="me-auto">Resume</strong>
+          <small class="text-muted">{% now "D M Y" %}</small>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+          Hey, guys. Welcome to our website.
+        </div>
+      </div>
+    </div>
+  </div>
 
 
-    <footer>
-      {% include 'include/footer.html' %}
-    </footer>
+  {% include 'include/header.html' %}
 
-    
-    <script src="{% static 'js/bootstrap.bundle.min.js' %}" ></script>
-  </body>
+  {% block content %}
+
+  {% endblock content %}
+
+
+  <footer>
+    {% include 'include/footer.html' %}
+  </footer>
+
+    <!-- Scoll Top -->
+    <div id="site-scroll"><i class="icon an an-angle-up"></i></div>
+    <!-- End Scoll Top -->
+
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+  <script>
+    window.onload = (event) => {
+      var toastLiveExample = document.getElementById('liveToast')
+      var toast = new bootstrap.Toast(toastLiveExample)
+      toast.show()
+    }
+  </script>
+</body>
+
 </html>
