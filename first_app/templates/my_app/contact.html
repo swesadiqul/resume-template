@@ -4,7 +4,7 @@
 
 
 {% block content %}
-<section id="getInTouch" class="getInTouch mt-5 py-5">
+<section id="getInTouch" class="getInTouch s-m">
     <div class="container">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -23,28 +23,32 @@
                     <div class="row">
                         <div class="col">
                             <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">First name:</label>
-                                <input type="text" class="form-control" name="first_name" id="exampleFormControlInput1"
-                                    placeholder="First name">
+                                <label for="exampleFormControlInput1" class="form-label">First name<span class="text-danger">*</span></label>
+                                <!-- <input type="text" class="form-control" name="first_name" id="exampleFormControlInput1"
+                                    placeholder="First name"> -->
+                                    {{ form.first_name }}
                             </div>
                         </div>
                         <div class="col">
                             <div class="mb-3">
-                                <label for="exampleFormControlInput2" class="form-label">Last name:</label>
-                                <input type="text" class="form-control" name="last_name" id="exampleFormControlInput2"
-                                    placeholder="Last name">
+                                <label for="exampleFormControlInput2" class="form-label">Last name<span class="text-danger">*</span></label>
+                                <!-- <input type="text" class="form-control" name="last_name" id="exampleFormControlInput2"
+                                    placeholder="Last name"> -->
+                                    {{ form.last_name }}
                             </div>
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="exampleFormControlInput3" class="form-label">Email address:</label>
-                        <input type="email" class="form-control" name="email" id="exampleFormControlInput3"
-                            placeholder="Email address">
+                        <label for="exampleFormControlInput3" class="form-label">Email address<span class="text-danger">*</span></label>
+                        <!-- <input type="email" class="form-control" name="email" id="exampleFormControlInput3"
+                            placeholder="Email address"> -->
+                            {{ form.email }}
                     </div>
                     <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Message:</label>
-                        <textarea class="form-control" name="message" id="exampleFormControlTextarea1"
-                            rows="7"></textarea>
+                        <label for="exampleFormControlTextarea1" class="form-label">Message<span class="text-danger">*</span></label>
+                        <!-- <textarea class="form-control" name="message" id="exampleFormControlTextarea1" placeholder="Write your message here ..."
+                            rows="7"></textarea> -->
+                            {{ form.message }}
                     </div>
                     <button type="submit" class="btn btn-primary px-4">Submit</button>
                 </form>
