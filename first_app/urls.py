@@ -10,6 +10,7 @@ urlpatterns = [
     path('services/', services, name='services'),
     path('post-list', post_list, name='post_list'),
     path('post/<int:id>/', post_detail, name='post_detail'),
+    path('resume', resume, name='resume'),
     # path('post/<int:pk>/comment/', comment_create, name='comment_create'),
     # path('post/<int:pk>/reply/', reply_create, name='reply_create'),
     # path('create/', post_create, name='post_create'),

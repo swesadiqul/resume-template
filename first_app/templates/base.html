@@ -46,6 +46,44 @@
       toast.show()
     }
   </script>
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-6407880a2e4829d0"></script>
+<script src="{% static 'js/share42/share42.js' %}"></script>
+<script>
+  var url = 'https://wati-integration-service.clare.ai/ShopifyWidget/shopifyWidget.js?35316';
+  var s = document.createElement('script');
+  s.type = 'text/javascript';
+  s.async = true;
+  s.src = url;
+  var options = {
+"enabled":true,
+"chatButtonSetting":{
+    "backgroundColor":"#4dc247",
+    "ctaText":"Message Me",
+    "borderRadius":"25",
+    "marginLeft":"0",
+    "marginBottom":"50",
+    "marginRight":"50",
+    "position":"right"
+},
+"brandSetting":{
+    "brandName":"Sadiqul Islam",
+    "brandSubTitle":"Typically replies within a day",
+    "brandImg":"https://avatars.githubusercontent.com/u/61262985?v=4",
+    "welcomeText":"Hi there!\nHow can I help you?",
+    "messageText":"Hello, I have a question about {{page_link}}",
+    "backgroundColor":"#0a5f54",
+    "ctaText":"Start Chat",
+    "borderRadius":"25",
+    "autoShow":false,
+    "phoneNumber":"8801706711482"
+}
+};
+  s.onload = function() {
+      CreateWhatsappChatWidget(options);
+  };
+  var x = document.getElementsByTagName('script')[0];
+  x.parentNode.insertBefore(s, x);
+</script>
 </body>
-
 </html>

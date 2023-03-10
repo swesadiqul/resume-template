@@ -12,8 +12,10 @@
     <div class="row">
       <div class="col-md-8 mb-5">
         <h3>{{ post.title }}</h3>
-        <p class="text-muted">Posted on {{ post.created_at|date:"M d, Y" }} | Posted by {{ post.author.username }} |
-          {{ post.category }}</p>
+        <p class="text-muted"><i class="fa-solid fa-user me-2"></i>{{ post.author.username }}<i
+            class="fa-solid fa-table-cells-large mx-2"></i>{{ post.category }}<i
+            class="fa-solid fa-calendar-days mx-2"></i>{{ post.created_at|date:"M d, Y" }}
+        </p>
         <img src="{{ post.thumbnail_image.url }}" alt="{{ post.title }}" class="img-fluid post-img mb-3">
         <div class="post-content">
           {{ post.content|safe }}
@@ -57,8 +59,8 @@
           <div class="row">
             <div class="col-lg-1 col-md-1 col-2">
               <img
-              src="https://res.cloudinary.com/practicaldev/image/fetch/s--4MGu2Aj4--/c_fill,f_auto,fl_progressive,h_320,q_auto,w_320/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/724081/42575e68-46f3-456d-a995-6a4d2393dae1.jpg"
-              class="mr-3 rounded-circle" width="50" height="50" alt="{{ comment.name }}">
+                src="https://res.cloudinary.com/practicaldev/image/fetch/s--4MGu2Aj4--/c_fill,f_auto,fl_progressive,h_320,q_auto,w_320/https://dev-to-uploads.s3.amazonaws.com/uploads/user/profile_image/724081/42575e68-46f3-456d-a995-6a4d2393dae1.jpg"
+                class="mr-3 rounded-circle" width="50" height="50" alt="{{ comment.name }}">
             </div>
             <div class="col-lg-11 col-md-11 col-10">
               <h6 class="mt-0 mb-0">{{ comment.name }}</h6>
@@ -69,7 +71,8 @@
               <div class="media-body">
                 <p>{{ comment.message }}</p>
                 <p>
-                  <a class="text-secondary" data-bs-toggle="collapse" href="#collapseExample{{ forloop.counter }}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  <a class="text-secondary" data-bs-toggle="collapse" href="#collapseExample{{ forloop.counter }}"
+                    role="button" aria-expanded="false" aria-controls="collapseExample">
                     <i class="fa-solid fa-share"></i>
                   </a>
                 </p>
@@ -78,11 +81,13 @@
                     <form method="post" class="row g-3" action="{% url 'post_detail' post.id %}">
                       {% csrf_token %}
                       <div class="col-md-6">
-                        <label for="inputName" class="form-label visually-hidden">Name<span class="text-danger">*</span></label>
+                        <label for="inputName" class="form-label visually-hidden">Name<span
+                            class="text-danger">*</span></label>
                         {{ reply_form.name }}
                       </div>
                       <div class="col-md-6">
-                        <label for="inputEmail4" class="form-label visually-hidden">E-mail<span class="text-danger">*</span></label>
+                        <label for="inputEmail4" class="form-label visually-hidden">E-mail<span
+                            class="text-danger">*</span></label>
                         {{ reply_form.email }}
                       </div>
                       <div class="col-12">
@@ -96,7 +101,8 @@
                         {{ reply_form.message }}
                       </div>
                       <div class="col-12">
-                        <button type="submit" name="comment_submit" class="btn btn-primary rounded-pill px-4">Submit</button>
+                        <button type="submit" name="comment_submit"
+                          class="btn btn-primary rounded-pill px-4">Submit</button>
                       </div>
                       <input type="hidden" name="parent_comment" value="{{ comment.id }}">
                     </form>
@@ -120,20 +126,105 @@
         {% endfor %}
         {% endif %}
       </div>
+      <!-- right side of blog page -->
       <div class="col-md-4">
-        <div class="card">
+        <!-- category -->
+        <div class="card mb-4">
           <div class="card-body">
             <h5 class="card-title">Categories</h5>
             <ul class="list-group list-group-flush">
               {% for category in categories %}
-              <li class="list-group-item"><a href="{% url 'post_detail' category.id %}" class="text-decoration-none">
-                {{ category.name }}</a></li>
+              <li class="list-group-item"><a href="{% url 'post_detail' category.id %}"
+                  class="text-decoration-none text-dark">
+                  {{ category.name }}</a></li>
               {% endfor %}
             </ul>
           </div>
         </div>
+        <!-- popular and recent posts -->
+        <div class="card mb-4">
+          <div class="card-body">
+            <!-- Nav pills -->
+            <ul class="nav nav-pills" role="tablist">
+              <li class="nav-item">
+                <a class="btn btn-outline-primary active rounded-pill px-5" data-bs-toggle="pill"
+                  href="#recent">Recent</a>
+              </li>
+              <li class="nav-item">
+                <a class="btn btn-outline-primary ms-4 rounded-pill px-5" data-bs-toggle="pill"
+                  href="#popular">Popular</a>
+              </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div id="recent" class="container tab-pane active"><br>
+                {% for x in posts %}
+                <div class="row mb-3">
+                  <div class="col-2 p-0">
+                    <img src="{{ x.thumbnail_image.url }}" alt="Recent"
+                      style="width: 55px; height: 55px; border-radius: 50%;">
+                  </div>
+                  <div class="col-10">
+                    <p class="mb-0" style="font-size: 15px;">{{ x.title }}</p>
+                    <small>{{ x.created_at|date }}</small>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+              <div id="popular" class="container tab-pane fade"><br>
+                {% for x in posts %}
+                <div class="row mb-3">
+                  <div class="col-2 p-0">
+                    <img src="{{ x.thumbnail_image.url }}" alt="Recent"
+                      style="width: 55px; height: 55px; border-radius: 50%;">
+                  </div>
+                  <div class="col-10">
+                    <p class="mb-0" style="font-size: 15px;">{{ x.title }}</p>
+                    <small>{{ x.created_at|date }}</small>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- follow me -->
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title text-center">Follow Me</h5>
+            <hr>
+            <div class="social-link text-center mt-3">
+              {% for x in socials %}
+              {% if x.media_name == "Facebook" %}
+              <a href="{{ x.profile_url }}" target="_blank" class="me-3" style="color: #1877f2;"><i class="fa-brands fa-facebook fs-4"></i></a>
+              {% elif x.media_name == "Twitter" %}
+              <a href="{{ x.profile_url }}" target="_blank" class="me-3" style="color: #1da1f2;"><i class="fa-brands fa-twitter fs-4"></i></a>
+              {% elif x.media_name == "LinkedIn" %}
+              <a href="{{ x.profile_url }}" target="_blank" class="me-3" style="color: #0077b5;"><i class="fa-brands fa-linkedin-in fs-4"></i></a>
+              {% else %}
+              <a href="{{ x.profile_url }}" target="_blank" style="color: #333;"><i class="fa-brands fa-github fs-4"></i></a>
+              {% endif %}
+              {% endfor %}
+          </div>
+          </div>
+        </div>
+        <!-- tag cloud -->
+        <div class="card mb-4">
+          <div class="card-body">
+            <h5 class="card-title text-center mb-4">Tag Clouds</h5>
+            <div class="tag-cloud">
+              <a href="#" class="btn btn-outline-primary rounded-pill mb-3 py-1 px-2 me-1" role="button" data-bs-toggle="button">#Python</a>
+              <a href="#" class="btn btn-outline-primary rounded-pill mb-3 py-1 px-2 me-1" role="button" data-bs-toggle="button">#Django</a>
+              <a href="#" class="btn btn-outline-primary rounded-pill mb-3 py-1 px-2 me-1" role="button" data-bs-toggle="button">#DRF</a>
+              <a href="#" class="btn btn-outline-primary rounded-pill mb-3 py-1 px-2 me-1" role="button" data-bs-toggle="button">#React</a>
+              <a href="#" class="btn btn-outline-primary rounded-pill mb-3 py-1 px-2 me-1" role="button" data-bs-toggle="button">#HTML</a>
+              <a href="#" class="btn btn-outline-primary rounded-pill mb-3 py-1 px-2 me-1" role="button" data-bs-toggle="button">#CSS</a>
+              <a href="#" class="btn btn-outline-primary rounded-pill mb-3 py-1 px-2 me-1" role="button" data-bs-toggle="button">#SASS</a>
+          </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 </section>
 {% endblock %}

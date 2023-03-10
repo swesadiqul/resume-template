@@ -5,8 +5,10 @@ from .forms import *
 # Create your views here.
 def index(request):
 
+    services = Service.objects.all()[:6]
     context = {
         'form': ContactMeForm(),
+        'services': services,
     }
     return render(request, 'my_app/index.html', context)
 
@@ -52,6 +54,7 @@ def post_detail(request, id):
     comment_form = CommentForm()
     reply_form = ReplyForm()
     categories = Category.objects.all()
+    posts = Post.objects.all()[:3]
 
     if request.method == 'POST':
         if 'comment_submit' in request.POST:
@@ -87,6 +90,7 @@ def post_detail(request, id):
     'comment_form': comment_form,
     'reply_form': reply_form,
     'categories': categories,
+    'posts': posts,
     }
 
     return render(request, 'my_app/post_detail.html', context)
@@ -112,3 +116,6 @@ def like_post(request, pk):
     post.increment_like_count()
     return render(request, 'post_detail.html', {'post': post})
 
+
+def resume(request):
+    return render(request, 'my_app/resume.html')

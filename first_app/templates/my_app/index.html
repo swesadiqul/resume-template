@@ -155,78 +155,19 @@ Resume | Home
   <div class="container">
     <h1 class="text-center mb-5">Services</h1>
     <div class="row row-cols-1 row-cols-md-3 g-4">
+      {% for x in services %}
       <div class="col">
         <div class="card shadow p-3">
           <div class="icon text-center">
-            <img src="{% static 'images/wd.png' %}" alt="..." style="height: 100px; width: 100px;">
+            <img src="{{ x.icon.url }}" alt="..." style="height: 100px; width: 100px;">
           </div>
           <div class="card-body text-center">
-            <h5 class="card-title">Web Development</h5>
-            <p class="card-text">There are many variations of passages of Lorem Ipsum available, but the majority have
-              suffered alteration in some form, by injected humour,</p>
+            <h5 class="card-title">{{ x.service_name }}</h5>
+            <p class="card-text">{{ x.short_description }}</p>
           </div>
         </div>
       </div>
-      <div class="col">
-        <div class="card shadow p-3">
-          <div class="icon text-center">
-            <img src="{% static 'images/gd.jpg' %}" alt="..." style="height: 100px; width: 100px;">
-          </div>
-          <div class="card-body text-center">
-            <h5 class="card-title">Graphics Design</h5>
-            <p class="card-text">There are many variations of passages of Lorem Ipsum available, but the majority have
-              suffered alteration in some form, by injected humour,</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card shadow p-3">
-          <div class="icon text-center">
-            <img src="{% static 'images/nw.jpg' %}" alt="..." style="height: 100px; width: 100px;">
-          </div>
-          <div class="card-body text-center">
-            <h5 class="card-title">Server Networking</h5>
-            <p class="card-text">There are many variations of passages of Lorem Ipsum available, but the majority have
-              suffered alteration in some form, by injected humour,</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card shadow p-3">
-          <div class="icon text-center">
-            <img src="{% static 'images/app.png' %}" alt="..." style="height: 100px; width: 100px;">
-          </div>
-          <div class="card-body text-center">
-            <h5 class="card-title">Apps Development</h5>
-            <p class="card-text">There are many variations of passages of Lorem Ipsum available, but the majority have
-              suffered alteration in some form, by injected humour,</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card shadow p-3">
-          <div class="icon text-center">
-            <img src="{% static 'images/wb.png' %}" alt="..." style="height: 100px; width: 100px;">
-          </div>
-          <div class="card-body text-center">
-            <h5 class="card-title">Web Design</h5>
-            <p class="card-text">There are many variations of passages of Lorem Ipsum available, but the majority have
-              suffered alteration in some form, by injected humour,</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card shadow p-3">
-          <div class="icon text-center">
-            <img src="{% static 'images/ui-ux.png' %}" alt="..." style="height: 100px; width: 100px;">
-          </div>
-          <div class="card-body text-center">
-            <h5 class="card-title">UI / UX Design</h5>
-            <p class="card-text">There are many variations of passages of Lorem Ipsum available, but the majority have
-              suffered alteration in some form, by injected humour,</p>
-          </div>
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </section>

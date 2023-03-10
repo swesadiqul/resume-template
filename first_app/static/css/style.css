@@ -12,3 +12,17 @@
     width: 100%;
     border-radius: 7px;
 }
+.list-group .list-group-item a{
+    font-size: 15px !important;
+}
+.list-group .list-group-item a:hover{
+    color: dodgerblue !important;
+}
+.tag-cloud a{
+    font-size: 15px !important;
+}
+.aboutImg{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}

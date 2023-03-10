@@ -97,6 +97,7 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+
 class Post(models.Model):
     POST_TYPE_CHOICES = [
         ('article', 'Article'),
@@ -190,3 +191,20 @@ class SocialAccount(models.Model):
     
     def __str__(self):
         return self.media_name
+    
+
+
+
+class Service(models.Model):
+    service_name = models.CharField(max_length=120)
+    icon = models.ImageField(upload_to='service')
+    short_description = models.TextField()
+    details = RichTextUploadingField()
+
+
+    def __str__(self) -> str:
+        return self.service_name
+    
+
+    class Meta:
+        verbose_name_plural = "Service"
